@@ -1,0 +1,15 @@
+[project]
+name = "dim"
+version = "2.7.5"
+description = "Default template for PDM package"
+authors = [
+    {name = "", email = ""},
+]
+dependencies = ["django>=6.0.4", "semver>=3.0.4"]
+requires-python = "==3.14.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
