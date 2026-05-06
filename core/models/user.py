@@ -97,9 +97,10 @@ class User(AbstractBaseUser):
     class Meta:
         indexes = [
             models.Index(
-                fields=['updated_at', 'id']
-            )
+                fields=[
+                    'updated_at',
+                    'id',
+                ]
+            ),
+            models.Index(fields=['update_id'])
         ]
-
-    def __str__(self):
-        return self.email
