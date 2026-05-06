@@ -50,6 +50,8 @@ class User(AbstractBaseUser):
     avatar_color = models.CharField(
         max_length=64,
         choices=UserAvatarColor.choices,
+        blank=True,
+        null=True,
     )
     deleted_at = models.DateTimeField(
         blank=True,
@@ -79,10 +81,11 @@ class User(AbstractBaseUser):
     status = models.CharField(
         max_length=64,
         choices=UserStatus.choices,
+        default=UserStatus.ACTIVE,
     )
     profile_changed_at = models.DateTimeField(auto_now_add=True)
     update_id = models.UUIDField(
-        default=uuid.uuid4,
+        default=uuid.uuid7,
         db_index=True,
     )
 
