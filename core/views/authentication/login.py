@@ -4,7 +4,7 @@ from django.views import View
 import json
 
 
-class AuthLogin(View):
+class Login(View):
     def post(self, request):
         data = json.loads(request.body)
 

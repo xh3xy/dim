@@ -1,8 +1,8 @@
-from core.views.auth.login import AuthLogin
-from core.views.server.config import ServerConfig
-from core.views.server.features import ServerFeatures
-from core.views.server.ping import ServerPing
-from core.views.server.version import ServerVersion
+from core.views.authentication.login import Login
+from core.views.server.get_server_config import GetServerConfig
+from core.views.server.get_server_features import GetServerFeatures
+from core.views.server.get_server_version import GetServerVersion
+from core.views.server.ping_server import PingServer
 from core.views.well_known.immich import WellknownImmich
 from django.urls import path
 
@@ -10,10 +10,10 @@ from django.urls import path
 urlpatterns = [
     path('.well-known/immich', WellknownImmich.as_view()),
 
-    path('api/auth/login', AuthLogin.as_view()),
+    path('api/auth/login', Login.as_view()),
 
-    path('api/server/config', ServerConfig.as_view()),
-    path('api/server/features', ServerFeatures.as_view()),
-    path('api/server/ping', ServerPing.as_view()),
-    path('api/server/version', ServerVersion.as_view())
+    path('api/server/config', GetServerConfig.as_view()),
+    path('api/server/features', GetServerFeatures.as_view()),
+    path('api/server/ping', PingServer.as_view()),
+    path('api/server/version', GetServerVersion.as_view())
 ]

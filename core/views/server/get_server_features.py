@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.views import View
 
 
-class ServerFeatures(View):
+class GetServerFeatures(View):
     def get(self, request):
         #TODO: Hardcoded
         return JsonResponse({

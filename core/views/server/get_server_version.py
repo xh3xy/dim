@@ -5,7 +5,7 @@ import semver
 import tomllib
 
 
-class ServerVersion(View):
+class GetServerVersion(View):
     def get(self, request):
         current = Path(__file__).resolve().parent
         while current != current.parent:
