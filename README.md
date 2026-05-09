@@ -355,8 +355,8 @@ Here is a list of what's missing, what works, what is work-in-progress:
 |--------|------|---------------|-------|
 | GET | /server/about | getAboutInfo | :red_square: |
 | GET | /server/apk-links | getApkLinks | :red_square: |
-| GET | /server/config | getServerConfig | :yellow_square: <sup>1</sup> |
-| GET | /server/features | getServerFeatures | :yellow_square: <sup>1</sup> |
+| GET | /server/config | getServerConfig | :orange_square: <sup>2</sup> |
+| GET | /server/features | getServerFeatures | :orange_square: <sup>2</sup> |
 | GET | /server/license | getServerLicense | :red_square: |
 | PUT | /server/license | setServerLicense | :red_square: |
 | DELETE | /server/license | deleteServerLicense | :red_square: |
@@ -567,4 +567,5 @@ Here is a list of what's missing, what works, what is work-in-progress:
 
 </details>
 
-<sup>1</sup> Contains hard-coded values
+<sup>1</sup> Contains hard-coded values, but shouldn't affect usage
+<sup>2</sup> Contains hard-coded values, and may affect usage
