@@ -514,7 +514,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 | GET | /users/me/onboarding | getUserOnboarding | :red_square: |
 | PUT | /users/me/onboarding | setUserOnboarding | :red_square: |
 | DELETE | /users/me/onboarding | deleteUserOnboarding | :red_square: |
-| GET | /users/me/preferences | getMyPreferences | :red_square: |
+| GET | /users/me/preferences | getMyPreferences | :orange_square: <sup>2</sup>|
 | PUT | /users/me/preferences | updateMyPreferences | :red_square: |
 | POST | /users/profile-image | createProfileImage | :red_square: |
 | DELETE | /users/profile-image | deleteProfileImage | :red_square: |

@@ -5,6 +5,7 @@ from core.views.server.get_server_features import GetServerFeatures
 from core.views.server.get_server_version import GetServerVersion
 from core.views.server.get_storage import GetStorage
 from core.views.server.ping_server import PingServer
+from core.views.users.get_my_preferences import GetMyPreferences
 from core.views.users.get_my_user import GetMyUser
 from core.views.well_known.immich import WellknownImmich
 from django.urls import path
@@ -23,4 +24,5 @@ urlpatterns = [
     path('api/server/version', GetServerVersion.as_view()),
 
     path('api/users/me', GetMyUser.as_view()),
+    path('api/users/me/preferences', GetMyPreferences.as_view()),
 ]
