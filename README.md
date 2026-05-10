@@ -363,7 +363,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 | GET | /server/media-types | getSupportedMediaTypes | :red_square: |
 | GET | /server/ping | pingServer | :green_square: |
 | GET | /server/statistics | getServerStatistics | :red_square: |
-| GET | /server/storage | getStorage | :red_square: |
+| GET | /server/storage | getStorage | :green_square: |
 | GET | /server/theme | getTheme | :red_square: |
 | GET | /server/version | getServerVersion | :green_square: |
 | GET | /server/version-check | getVersionCheck | :red_square: |

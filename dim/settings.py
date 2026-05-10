@@ -122,3 +122,5 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = 'core.User'
+
+MEDIA_ROOT = os.getenv('DIM_MEDIA_ROOT')
