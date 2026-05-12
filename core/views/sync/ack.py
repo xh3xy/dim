@@ -51,8 +51,10 @@ class SyncAck(View):
             SyncCheckpoint.objects.update_or_create(
                 session=session,
                 type=checkpoint['type'],
-                ack=checkpoint['ack'],
-                update_id=checkpoint['update_id'],
+                defaults={
+                    'ack': checkpoint['ack'],
+                    'update_id': checkpoint['update_id'],
+                },
             )
 
         return HttpResponse(status=204)
