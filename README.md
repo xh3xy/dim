@@ -377,9 +377,9 @@ Here is a list of what's missing, what works, what is work-in-progress:
 
 | Method | Path | Endpoint Name | State |
 |--------|------|---------------|-------|
-| GET | /sessions | getSessions | :red_square: |
+| GET | /sessions | getSessions | :green_square: |
 | POST | /sessions | createSession | :red_square: |
-| DELETE | /sessions | deleteAllSessions | :red_square: |
+| DELETE | /sessions | deleteAllSessions | :green_square: |
 | PUT | /sessions/{id} | updateSession | :red_square: |
 | DELETE | /sessions/{id} | deleteSession | :red_square: |
 | POST | /sessions/{id}/lock | lockSession | :red_square: |
