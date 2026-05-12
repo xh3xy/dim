@@ -567,7 +567,10 @@ Here is a list of what's missing, what works, what is work-in-progress:
 
 </details>
 
-<sup>1</sup> Contains hard-coded values, but shouldn't affect usage
-<sup>2</sup> Contains hard-coded values, and may affect usage
-<sup>3</sup> Implementation is incomplete, but shoudn't affect usage
-<sup>4</sup> Implementation is incomplete, and may affect usage
+¹ Contains hard-coded values, but shouldn't affect usage
+
+² Contains hard-coded values, and may affect usage
+
+³ Implementation is incomplete, but shoudn't affect usage
+
+⁴ Implementation is incomplete, and may affect usage
