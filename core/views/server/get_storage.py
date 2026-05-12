@@ -12,13 +12,13 @@ class GetStorage(View):
     def get(self, request):
         total, used, free = shutil.disk_usage(settings.MEDIA_ROOT)
 
-        disk_percentage = round((total - free) / total, 2)
+        disk_percentage = round((total - free) / total * 100, 2)
 
         return JsonResponse({
             'diskAvailable': as_human_readable(free),
             'diskAvailableRaw': free,
-            'diskSize': total,
-            'diskSizeRaw': as_human_readable(total),
+            'diskSize': as_human_readable(total),
+            'diskSizeRaw': total,
             'diskUsagePercentage': disk_percentage,
             'diskUse': as_human_readable(used),
             'diskUseRaw': used,
