@@ -20,7 +20,7 @@ def is_authenticated(view):
 
         try:
             session = Session.objects.select_related('user_id').get(token=hashed.encode())
-            request.user = session.user_id
+            request.user = session
         except Session.DoesNotExist:
             return JsonResponse({
                 "message": "Invalid user token",

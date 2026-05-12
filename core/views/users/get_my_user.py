@@ -10,7 +10,7 @@ from typing import cast
 @method_decorator(is_authenticated, name='dispatch')
 class GetMyUser(View):
     def get(self, request):
-        user = cast(User, request.user)
+        user = cast(User, request.user.user_id)
 
         return JsonResponse({
             'id': user.id,
