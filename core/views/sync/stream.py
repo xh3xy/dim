@@ -1,6 +1,7 @@
 from core.decorators.is_authenticated import is_authenticated
 from core.enums.sync_entity_type import SyncEntityType
 from core.enums.sync_request_type import SyncRequestType
+from core.models.user import User
 from core.models.session import Session
 from core.models.sync_checkpoint import SyncCheckpoint
 from core.utils.timezone_serializer import timezone_serializer
@@ -26,6 +27,27 @@ class SyncStream(View):
                 return False
 
             return complete_ack.update_id.int >> 80 < int(time.time() * 1000) - MAX_DURATION
+
+        def user_jsonl(sync_type, user):
+            return json.dumps({
+                'type': sync_type,
+                'data': {
+                    'id': str(user.id),
+                    'name': user.name,
+                    'email': user.email,
+                    'avatarColor': user.avatar_color,
+                    'deletedAt': timezone_serializer(user.deleted_at) if user.deleted_at else None,
+                    'profileChangedAt': timezone_serializer(user.profile_changed_at),
+                    'isAdmin': user.is_admin,
+                    'pinCode': user.pin_code,
+                    'oauthId': user.oauth_id,
+                    'storageLabel': user.storage_label,
+                    'quotaSizeInBytes': user.quota_size_in_bytes,
+                    'quotaUsageInBytes': user.quota_usage_in_bytes,
+                    'hasProfileImage': user.profile_image != None,
+                },
+                'ack': f'{sync_type}|{str(user.update_id)}',
+            })
 
         session = cast(Session, request.user)
         user = session.user_id
@@ -71,27 +93,17 @@ class SyncStream(View):
         # AuthUsersV1
         if SyncRequestType.AUTHUSERSV1.value in checkpoints:
             sync_type = SyncEntityType.AUTHUSERV1.value
-            response_body.append(
-                json.dumps({
-                    'type': sync_type,
-                    'data': {
-                        'id': str(user.id),
-                        'name': user.name,
-                        'email': user.email,
-                        'avatarColor': user.avatar_color,
-                        'deletedAt': timezone_serializer(user.deleted_at) if user.deleted_at else None,
-                        'profileChangedAt': timezone_serializer(user.profile_changed_at),
-                        'isAdmin': user.is_admin,
-                        'pinCode': user.pin_code,
-                        'oauthId': user.oauth_id,
-                        'storageLabel': user.storage_label,
-                        'quotaSizeInBytes': user.quota_size_in_bytes,
-                        'quotaUsageInBytes': user.quota_usage_in_bytes,
-                        'hasProfileImage': user.profile_image != None,
-                    },
-                    'ack': f'{sync_type}|{str(user.update_id)}',
-                })
-            )
+            response_body.append(user_jsonl(sync_type, user))
+
+
+        # UsersV1
+        if SyncRequestType.USERSV1.value in checkpoints:
+            sync_type = SyncEntityType.USERV1.value
+
+            users = User.objects.all()
+            for user in users:
+                response_body.append(user_jsonl(sync_type, user))
+
 
         # SyncComplete
         sync_type = SyncEntityType.SYNCCOMPLETEV1.value
