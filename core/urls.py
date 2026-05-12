@@ -6,11 +6,11 @@ from core.views.server.get_server_version import GetServerVersion
 from core.views.server.get_storage import GetStorage
 from core.views.server.ping_server import PingServer
 from core.views.sync.ack import SyncAck
+from core.views.sync.stream import SyncStream
 from core.views.users.get_my_preferences import GetMyPreferences
 from core.views.users.get_my_user import GetMyUser
 from core.views.well_known.immich import WellknownImmich
 from django.urls import path
-
 
 urlpatterns = [
     path('.well-known/immich', WellknownImmich.as_view()),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/server/version', GetServerVersion.as_view()),
 
     path('api/sync/ack', SyncAck.as_view()),
+    path('api/sync/stream', SyncStream.as_view()),
 
     path('api/users/me', GetMyUser.as_view()),
     path('api/users/me/preferences', GetMyPreferences.as_view()),

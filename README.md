@@ -425,10 +425,10 @@ Here is a list of what's missing, what works, what is work-in-progress:
 
 | Method | Path | Endpoint Name | State |
 |--------|------|---------------|-------|
-| GET | /sync/ack | getSyncAck | :red_square: |
-| POST | /sync/ack | sendSyncAck | :red_square: |
-| DELETE | /sync/ack | deleteSyncAck | :red_square: |
-| POST | /sync/stream | getSyncStream | :red_square: |
+| GET | /sync/ack | getSyncAck | :green_square: |
+| POST | /sync/ack | sendSyncAck | :green_square: |
+| DELETE | /sync/ack | deleteSyncAck | :green_square: |
+| POST | /sync/stream | getSyncStream | :orange_square: <sup>2</sup>|
 
 </details>
 

@@ -1,0 +1,30 @@
+from django.db import models
+
+
+class SyncRequestType(models.TextChoices):
+    ALBUMSV1 = 'AlbumsV1', "AlbumsV1",
+    ALBUMSV2 = 'AlbumsV2', "AlbumsV2",
+    ALBUMUSERSV1 = 'AlbumUsersV1', "AlbumUsersV1",
+    ALBUMTOASSETSV1 = 'AlbumToAssetsV1', "AlbumToAssetsV1",
+    ALBUMASSETSV1 = 'AlbumAssetsV1', "AlbumAssetsV1",
+    ALBUMASSETSV2 = 'AlbumAssetsV2', "AlbumAssetsV2",
+    ALBUMASSETEXIFSV1 = 'AlbumAssetExifsV1', "AlbumAssetExifsV1",
+    ASSETSV1 = 'AssetsV1', "AssetsV1",
+    ASSETSV2 = 'AssetsV2', "AssetsV2",
+    ASSETEXIFSV1 = 'AssetExifsV1', "AssetExifsV1",
+    ASSETEDITSV1 = 'AssetEditsV1', "AssetEditsV1",
+    ASSETMETADATAV1 = 'AssetMetadataV1', "AssetMetadataV1",
+    AUTHUSERSV1 = 'AuthUsersV1', "AuthUsersV1",
+    MEMORIESV1 = 'MemoriesV1', "MemoriesV1",
+    MEMORYTOASSETSV1 = 'MemoryToAssetsV1', "MemoryToAssetsV1",
+    PARTNERSV1 = 'PartnersV1', "PartnersV1",
+    PARTNERASSETSV1 = 'PartnerAssetsV1', "PartnerAssetsV1",
+    PARTNERASSETSV2 = 'PartnerAssetsV2', "PartnerAssetsV2",
+    PARTNERASSETEXIFSV1 = 'PartnerAssetExifsV1', "PartnerAssetExifsV1",
+    PARTNERSTACKSV1 = 'PartnerStacksV1', "PartnerStacksV1",
+    STACKSV1 = 'StacksV1', "StacksV1",
+    USERSV1 = 'UsersV1', "UsersV1",
+    PEOPLEV1 = 'PeopleV1', "PeopleV1",
+    ASSETFACESV1 = 'AssetFacesV1', "AssetFacesV1",
+    ASSETFACESV2 = 'AssetFacesV2', "AssetFacesV2",
+    USERMETADATAV1 = 'UserMetadataV1', "UserMetadataV1"
