@@ -15,7 +15,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 
 | Method | Path | Endpoint Name | State |
 |--------|------|---------------|-------|
-| GET | /api-keys | getApiKeys | :red_square: |
+| GET | /api-keys | getApiKeys | :orange_square: <sup>2</sup> <sup>4</sup> |
 | POST | /api-keys | createApiKey | :red_square: |
 | GET | /api-keys/me | getMyApiKey | :red_square: |
 | GET | /api-keys/{id} | getApiKey | :red_square: |

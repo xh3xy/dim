@@ -1,3 +1,4 @@
+from core.views.api_keys.api_keys import ApiKeys
 from core.views.authentication.login import Login
 from core.views.authentication.logout import Logout
 from core.views.authentication.validate_access_token import ValidateAccessToken
@@ -15,6 +16,8 @@ from django.urls import path
 
 urlpatterns = [
     path('.well-known/immich', WellknownImmich.as_view()),
+
+    path('api/api-keys', ApiKeys.as_view()),
 
     path('api/auth/login', Login.as_view()),
     path('api/auth/logout', Logout.as_view()),
