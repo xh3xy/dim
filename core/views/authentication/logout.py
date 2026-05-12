@@ -10,7 +10,7 @@ from django.views import View
 @method_decorator(is_authenticated, name='dispatch')
 class Logout(View):
     def post(self, request):
-        Session.objects.get(id=request.user).delete()
+        Session.objects.get(id=request.user.id).delete()
 
         # TODO: Missing OAuth uri?
 
