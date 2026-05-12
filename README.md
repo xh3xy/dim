@@ -381,7 +381,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 | POST | /sessions | createSession | :red_square: |
 | DELETE | /sessions | deleteAllSessions | :green_square: |
 | PUT | /sessions/{id} | updateSession | :red_square: |
-| DELETE | /sessions/{id} | deleteSession | :red_square: |
+| DELETE | /sessions/{id} | deleteSession | :green_square: |
 | POST | /sessions/{id}/lock | lockSession | :red_square: |
 </details>
 

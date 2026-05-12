@@ -8,6 +8,7 @@ from core.views.server.get_server_version import GetServerVersion
 from core.views.server.get_storage import GetStorage
 from core.views.server.ping_server import PingServer
 from core.views.sessions.sessions import Sessions
+from core.views.sessions.session_id import SessionId
 from core.views.sync.ack import SyncAck
 from core.views.sync.stream import SyncStream
 from core.views.users.get_my_preferences import GetMyPreferences
@@ -31,6 +32,7 @@ urlpatterns = [
     path('api/server/version', GetServerVersion.as_view()),
 
     path('api/sessions', Sessions.as_view()),
+    path('api/sessions/<str:session_id>', SessionId.as_view()),
 
     path('api/sync/ack', SyncAck.as_view()),
     path('api/sync/stream', SyncStream.as_view()),
