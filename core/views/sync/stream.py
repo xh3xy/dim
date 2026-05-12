@@ -21,8 +21,8 @@ MAX_DURATION = MAX_DAYS * 24 * 60 * 60 * 1000
 @method_decorator(is_authenticated, name='dispatch')
 class SyncStream(View):
     def post(self, request):
-        def needs_full_sync(checkpoints_map):
-            complete_ack = checkpoints_map.filter(type=SyncEntityType.SYNCCOMPLETEV1).first()
+        def needs_full_sync(checkpoints):
+            complete_ack = checkpoints.filter(type=SyncEntityType.SYNCCOMPLETEV1).first()
             if not complete_ack:
                 return False
 
@@ -72,6 +72,7 @@ class SyncStream(View):
             )
 
         current_checkpoints = SyncCheckpoint.objects.filter(session=session)
+        checkpoints_map = {c.type: c for c in current_checkpoints}
         if needs_full_sync(current_checkpoints):
             return JsonResponse(
                 {
@@ -82,27 +83,42 @@ class SyncStream(View):
                 content_type='application/jsonlines+json',
             )
 
-        checkpoints = set()
+        requested_checkpoints = set()
         for ack in body['types']:
-            checkpoints.add(ack)
+            requested_checkpoints.add(ack)
 
         now_id = uuid.uuid7()
 
         # TODO: Add missing RequestTypes
 
         # AuthUsersV1
-        if SyncRequestType.AUTHUSERSV1.value in checkpoints:
-            sync_type = SyncEntityType.AUTHUSERV1.value
-            response_body.append(user_jsonl(sync_type, user))
+        if SyncRequestType.AUTHUSERSV1.value in requested_checkpoints:
+            sync_type = SyncEntityType.AUTHUSERV1
+            ack = checkpoints_map.get(sync_type)
+
+            qs = User.objects.filter(
+                id=user.id,
+                update_id__lt=now_id,
+            )
+            if ack:
+                qs = qs.filter(update_id__gt=ack.update_id)
+
+            if qs:
+                response_body.append(user_jsonl(sync_type.value, qs.first()))
 
 
         # UsersV1
-        if SyncRequestType.USERSV1.value in checkpoints:
+        if SyncRequestType.USERSV1.value in requested_checkpoints:
             sync_type = SyncEntityType.USERV1.value
+            ack = checkpoints_map.get(sync_type)
 
-            users = User.objects.all()
-            for user in users:
-                response_body.append(user_jsonl(sync_type, user))
+            qs = User.objects.filter(update_id__lt=now_id)
+            if ack:
+                qs = qs.filter(update_id__gt=ack.update_id)
+
+            if qs:
+                for user in qs:
+                    response_body.append(user_jsonl(sync_type, user))
 
 
         # SyncComplete
