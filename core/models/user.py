@@ -104,3 +104,7 @@ class User(AbstractBaseUser):
             ),
             models.Index(fields=['update_id'])
         ]
+
+    def save(self, *args, **kwargs):
+        self.update_id = uuid.uuid7()
+        super().save(*args, **kwargs)

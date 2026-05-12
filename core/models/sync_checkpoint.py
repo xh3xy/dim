@@ -32,3 +32,7 @@ class SyncCheckpoint(models.Model):
                 name='unique_session_per_type',
             )
         ]
+
+    def save(self, *args, **kwargs):
+        self.update_id = uuid.uuid7()
+        super().save(*args, **kwargs)
