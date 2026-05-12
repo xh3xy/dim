@@ -99,7 +99,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 | POST | /auth/admin-sign-up | signUpAdmin | :red_square: |
 | POST | /auth/change-password | changePassword | :red_square: |
 | POST | /auth/login | login | :yellow_square: <sup>1</sup>|
-| POST | /auth/logout | logout | :red_square: |
+| POST | /auth/logout | logout | :yellow_square: <sup>3</sup>|
 | PUT | /auth/pin-code | changePinCode | :red_square: |
 | POST | /auth/pin-code | setupPinCode | :red_square: |
 | DELETE | /auth/pin-code | resetPinCode | :red_square: |
@@ -428,7 +428,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 | GET | /sync/ack | getSyncAck | :green_square: |
 | POST | /sync/ack | sendSyncAck | :green_square: |
 | DELETE | /sync/ack | deleteSyncAck | :green_square: |
-| POST | /sync/stream | getSyncStream | :orange_square: <sup>2</sup>|
+| POST | /sync/stream | getSyncStream | :orange_square: <sup>4</sup>|
 
 </details>
 
@@ -569,3 +569,5 @@ Here is a list of what's missing, what works, what is work-in-progress:
 
 <sup>1</sup> Contains hard-coded values, but shouldn't affect usage
 <sup>2</sup> Contains hard-coded values, and may affect usage
+<sup>3</sup> Implementation is incomplete, but shoudn't affect usage
+<sup>4</sup> Implementation is incomplete, and may affect usage

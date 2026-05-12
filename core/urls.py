@@ -1,4 +1,5 @@
 from core.views.authentication.login import Login
+from core.views.authentication.logout import Logout
 from core.views.authentication.validate_access_token import ValidateAccessToken
 from core.views.server.get_server_config import GetServerConfig
 from core.views.server.get_server_features import GetServerFeatures
@@ -16,6 +17,7 @@ urlpatterns = [
     path('.well-known/immich', WellknownImmich.as_view()),
 
     path('api/auth/login', Login.as_view()),
+    path('api/auth/logout', Logout.as_view()),
     path('api/auth/validateToken', ValidateAccessToken.as_view()),
 
     path('api/server/config', GetServerConfig.as_view()),

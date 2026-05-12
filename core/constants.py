@@ -1,0 +1,1 @@
+LOGIN_URL = '/auth/login?autoLaunch=0'
