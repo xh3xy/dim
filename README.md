@@ -360,7 +360,7 @@ Here is a list of what's missing, what works, what is work-in-progress:
 | GET | /server/license | getServerLicense | :red_square: |
 | PUT | /server/license | setServerLicense | :red_square: |
 | DELETE | /server/license | deleteServerLicense | :red_square: |
-| GET | /server/media-types | getSupportedMediaTypes | :red_square: |
+| GET | /server/media-types | getSupportedMediaTypes | :green_square: |
 | GET | /server/ping | pingServer | :green_square: |
 | GET | /server/statistics | getServerStatistics | :red_square: |
 | GET | /server/storage | getStorage | :green_square: |
